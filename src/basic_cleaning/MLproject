@@ -1,0 +1,40 @@
+name: basic_cleaning
+conda_env: conda.yml
+
+entry_points:
+  main:
+    parameters:
+
+      input_artifact:
+        description: Name of the W&B artifact serving as an input to this artifact
+        type: str
+
+      output_artifact:
+        description: Name of the artifact being exported (e.g., clean_data.csv)
+        type: str
+
+      output_type:
+        description: Artificat type as a lable for W&B
+        type: str
+
+      output_description:
+        description: Description of the output artifact
+        type: str
+
+      min_price:
+        description: Minimum threshold price of houses in the dataset
+        type: float
+
+      max_price:
+        description: Maximum threshold price of houses in the dataset
+        type: float
+
+
+    command: >-
+        python run.py  \
+         --input_artifact {input_artifact} \
+         --output_artifact {output_artifact} \
+         --output_type {output_type} \
+         --output_description {output_description}  \
+         --min_price {min_price}  \
+         --max_price {max_price} 
